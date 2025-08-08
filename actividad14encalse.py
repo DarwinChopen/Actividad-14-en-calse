@@ -12,8 +12,8 @@ participantes={}
 while True:
     print("Menu")
     print("1.Ingreso")
-    print("2. Mostar Por Edad")
-    print("3. Mostar por Nombre")
+    print("2. Mostar Por Nombre")
+    print("3. Mostar por Edad")
     print("4. Salir")
     try:
         opcion = int(input("Ingrese una opcion"))
@@ -46,7 +46,15 @@ while True:
                 print(f"Edad: {datos["edad"]}")
                 print(f"Categoria: {datos["categoria"]}")
         case 3:
-            print("Mostrara por nomnre")
+            print("Mostrara por nombre")
+            listaNombre = [(var, datos["nombre"]) for var, datos in participantes.items()]
+            listaOrdenada = quick_sort(listaNombre)
+            for dorsal, _ in listaOrdenada:
+                datos = participantes[dorsal]
+                print(f"Dorsal: {dorsal}")
+                print(f"Nombre: {datos["nombre"]}")
+                print(f"Edad: {datos["edad"]}")
+                print(f"Categoria: {datos["categoria"]}")
         case 4:
             print("Saliendo...")
             break
