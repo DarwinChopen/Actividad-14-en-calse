@@ -8,7 +8,7 @@ def quick_sort(lista):
     mayores = [x for x in lista[1:] if x > pivote]
 
     return quick_sort(menores) + iguales + quick_sort(mayores)
-participoantes={}
+participantes={}
 while True:
     print("Menu")
     print("1.Ingreso")
@@ -22,21 +22,29 @@ while True:
     match opcion:
         case 1:
             print("Ingreso")
-            cantidad = int(input("¿Cuántos participantes desea ingresar? "))
+            cantidad = int(input("Ingrese cuantos participantes va a ingresar? "))
             for i in range(cantidad):
                 print(f"\nparticipante #{i + 1}")
                 while True:
                    dorsal = int(input("Ingrese el número de dorsal: "))
-                   if dorsal in participoantes:
+                   if dorsal in participantes:
                        print("Este dorsal ya existe Ingrese otro")
                    else:
                        break
-                participoantes[dorsal] = {}
-                participoantes[dorsal]["nombre"] = input("Ingrese el nombre: ")
-                participoantes[dorsal]["edad"] = int(input("Ingrese la edad: "))
-                participoantes[dorsal]["categoria"] = input("Ingrese la categoria: ")
+                participantes[dorsal] = {}
+                participantes[dorsal]["nombre"] = input("Ingrese el nombre: ")
+                participantes[dorsal]["edad"] = int(input("Ingrese la edad: "))
+                participantes[dorsal]["categoria"] = input("Ingrese la categoria: ")
         case 2:
             print("Mostrar por edad")
+            listaEdad = [(var, datos["edad"]) for var, datos in participantes.items()]
+            listaOrdenada = quick_sort(listaEdad)
+            for dorsal, _ in listaOrdenada:
+                datos = participantes[dorsal]
+                print(f"Dorsal: {dorsal}")
+                print(f"Nombre: {datos["nombre"]}")
+                print(f"Edad: {datos["edad"]}")
+                print(f"Categoria: {datos["categoria"]}")
         case 3:
             print("Mostrara por nomnre")
         case 4:
